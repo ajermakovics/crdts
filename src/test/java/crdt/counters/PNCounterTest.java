@@ -8,7 +8,7 @@ public class PNCounterTest {
 
     @Test
     public void testIncreases_whenIncremented() throws Exception {
-        PNCounter counter = new PNCounter();
+        PNCounter<String> counter = new PNCounter<String>();
 
         counter.increment("a");
 
@@ -17,7 +17,7 @@ public class PNCounterTest {
 
     @Test
     public void testDecreases_whenDecremented() throws Exception {
-        PNCounter counter = new PNCounter();
+        PNCounter<String> counter = new PNCounter<String>();
 
         counter.increment("a");
         counter.decrement("b");
@@ -27,11 +27,11 @@ public class PNCounterTest {
 
     @Test
     public void testCountCorrect_whenMerged() throws Exception {
-        PNCounter counter = new PNCounter();
+        PNCounter<String> counter = new PNCounter<String>();
         counter.increment("a");
         counter.increment("b");
 
-        PNCounter counter2 = new PNCounter();
+        PNCounter<String> counter2 = new PNCounter<String>();
         counter2.increment("a");
         counter2.decrement("c");
 

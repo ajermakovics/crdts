@@ -3,6 +3,7 @@ apply plugin: 'eclipse'
 
 sourceCompatibility = 1.7
 targetCompatibility = 1.7
+group = 'crdts'
 
 version = '1.0'
 jar {
@@ -13,6 +14,7 @@ jar {
 
 repositories {
     mavenCentral()
+    mavenLocal()
 }
 
 dependencies {
