@@ -7,13 +7,19 @@ import java.util.HashMap;
 import java.util.Map;
 import java.util.Map.Entry;
 
-public class GCounter implements Serializable {
+/**
+ * Grow only counter. Can only be incremented
+ */
+public class GCounter<T> implements Serializable {
 
 	private static final long serialVersionUID = 1L;
 
-	Map<String, Integer> counts = new HashMap<>();
+	private Map<T, Integer> counts = new HashMap<>();
 
-    public void increment(String key) {
+	/**
+	 * Increment a given key
+	 */
+    public void increment(T key) {
         Integer count = counts.get(key);
         if( count == null )
             count = 0;
@@ -28,15 +34,17 @@ public class GCounter implements Serializable {
         return sum;
     }
 
-    public GCounter merge(GCounter other) {
-        for(Entry<String, Integer> e: other.counts.entrySet()) {
-            String key = e.getKey();
+    /**
+     * Merge another counter into this one
+     */
+    public void merge(GCounter<T> other) {
+        for(Entry<T, Integer> e: other.counts.entrySet()) {
+            T key = e.getKey();
             if( counts.containsKey(key) )
                 counts.put(key, max(e.getValue(), counts.get(key)) );
             else
                 counts.put(key, e.getValue());
         }
-        return this;
     }
 
     @Override

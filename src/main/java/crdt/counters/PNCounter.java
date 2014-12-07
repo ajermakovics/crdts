@@ -2,14 +2,17 @@ package crdt.counters;
 
 import java.io.Serializable;
 
-public class PNCounter implements Serializable {
+/**
+ * Increment and decrement counter
+ */
+public class PNCounter<T> implements Serializable {
 
 	private static final long serialVersionUID = 1L;
 
-	GCounter inc = new GCounter();
-    GCounter dec = new GCounter();
+	private GCounter<T> inc = new GCounter<T>();
+	private GCounter<T> dec = new GCounter<T>();
 
-    public void increment(String key) {
+    public void increment(T key) {
         inc.increment(key);
     }
 
@@ -17,11 +20,14 @@ public class PNCounter implements Serializable {
         return inc.get() - dec.get();
     }
 
-    public void decrement(String key) {
+    public void decrement(T key) {
         dec.increment(key);
     }
 
-	public void merge(PNCounter other) {
+    /**
+     * Merge another counter into this one
+     */
+	public void merge(PNCounter<T> other) {
 		inc.merge( other.inc );
 		dec.merge( other.dec );
 	}
