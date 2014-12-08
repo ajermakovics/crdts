@@ -13,6 +13,7 @@ public class PNCounterTest {
         counter.increment("a");
 
         assertEquals( 1, counter.get() );
+        assertEquals( 1, counter.copy().get() );
     }
 
     @Test
@@ -27,16 +28,14 @@ public class PNCounterTest {
 
     @Test
     public void testCountCorrect_whenMerged() throws Exception {
-        PNCounter<String> counter = new PNCounter<String>();
-        counter.increment("a");
-        counter.increment("b");
+        PNCounter<String> replica1 = new PNCounter<String>();
+        replica1.increment("hostname1");
+        PNCounter<String> replica2 = replica1.copy();
 
-        PNCounter<String> counter2 = new PNCounter<String>();
-        counter2.increment("a");
-        counter2.decrement("c");
+        replica1.increment("hostname2");
+        replica2.decrement("hostname2");
+        replica1.merge( replica2 );
 
-        counter.merge( counter2 );
-
-        assertEquals( 1, counter.get() );
+        assertEquals( 1, replica1.get() );
     }
 }

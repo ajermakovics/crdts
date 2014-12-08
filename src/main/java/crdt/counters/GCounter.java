@@ -14,7 +14,7 @@ public class GCounter<T> implements Serializable {
 
 	private static final long serialVersionUID = 1L;
 
-	private Map<T, Integer> counts = new HashMap<>();
+	private Map<T, Integer> counts = new HashMap<T, Integer>();
 
 	/**
 	 * Increment a given key
@@ -27,6 +27,9 @@ public class GCounter<T> implements Serializable {
         counts.put(key, count + 1);
     }
 
+    /**
+     * Get the counter value
+     */
     public int get() {
         int sum = 0;
         for(int count: counts.values())
@@ -51,4 +54,10 @@ public class GCounter<T> implements Serializable {
 	public String toString() {
 		return "GCounter{" + counts + "}";
 	}
+
+    public GCounter<T> copy() {
+    	GCounter<T> copy = new GCounter<T>();
+    	copy.counts = new HashMap<T, Integer>(counts);
+    	return copy;
+    }
 }

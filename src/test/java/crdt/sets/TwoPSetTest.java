@@ -52,18 +52,18 @@ public class TwoPSetTest {
 
 	@Test
 	public void testItemNotPresent_whenRemovedInOtherSetAndMerged() throws Exception {
-		TwoPSet<String> set1 = new TwoPSet<String>();
-		TwoPSet<String> set2 = new TwoPSet<String>();
+		TwoPSet<String> replica1 = new TwoPSet<String>();
+		TwoPSet<String> replica2 = new TwoPSet<String>();
 
-		set1.add("a");
-		set1.add("b");
+		replica1.add("a");
+		replica1.add("b");
 
-		set2.add("b");
-		set2.remove("b");
-		set2.add("c");
+		replica2.add("b");
+		replica2.remove("b");
+		replica2.add("c");
 
-		set1.merge(set2);
+		replica1.merge(replica2);
 
-		assertEquals(newHashSet("a", "c"), set1.get());
+		assertEquals(newHashSet("a", "c"), replica1.get());
 	}
 }

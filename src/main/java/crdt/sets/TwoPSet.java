@@ -26,7 +26,7 @@ public class TwoPSet<T> implements Serializable {
 	}
 
 	public Set<T> get() {
-		Set<T> added = new LinkedHashSet<>( adds.get() );
+		Set<T> added = new LinkedHashSet<T>( adds.get() );
 		added.removeAll( removes.get() );
 		return added;
 	}

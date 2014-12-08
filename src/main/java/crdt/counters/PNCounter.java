@@ -32,4 +32,10 @@ public class PNCounter<T> implements Serializable {
 		dec.merge( other.dec );
 	}
 
+	public PNCounter<T> copy() {
+		PNCounter<T> copy = new PNCounter<T>();
+		copy.inc = inc.copy();
+		copy.dec = dec.copy();
+		return copy;
+	}
 }

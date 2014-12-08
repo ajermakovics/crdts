@@ -13,7 +13,7 @@ public class GSet<T> implements Serializable {
 
 	private static final long serialVersionUID = 1L;
 
-	private Set<T> items = new LinkedHashSet<>();
+	private Set<T> items = new LinkedHashSet<T>();
 
 	public void add(T item) {
 		items.add(item);
