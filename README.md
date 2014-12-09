@@ -40,7 +40,7 @@ PN-Counter:
 Serialization
 ===========
 
-All CRDT classes implement Java Serializable
+All CRDT classes implement Java Serializable but you should be able to use any other library.
 
 Requirements
 ============
