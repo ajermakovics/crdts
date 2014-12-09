@@ -15,10 +15,12 @@ PN-Counter:
 ```java
         PNCounter<String> replica1 = new PNCounter<String>();
         replica1.increment("hostname1");
+        
         PNCounter<String> replica2 = replica1.copy();
 
         replica1.increment("hostname2");
         replica2.decrement("hostname2");
+        
         replica1.merge( replica2 ); 
         replica1.get(); // counter is 1
 ```
