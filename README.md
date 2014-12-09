@@ -19,21 +19,22 @@ PN-Counter:
 
         replica1.increment("hostname2");
         replica2.decrement("hostname2");
-        replica1.merge( replica2 ); // counter is 1
+        replica1.merge( replica2 ); 
+        replica1.get(); // counter is 1
 ```
 2-P Set:
 ```java
 		TwoPSet<String> replica1 = new TwoPSet<String>();
-		TwoPSet<String> replica2 = new TwoPSet<String>();
 
 		replica1.add("a");
 		replica1.add("b");
-
-		replica2.add("b");
+        
+        TwoPSet<String> replica2 = replica1.copy();
 		replica2.remove("b");
 		replica2.add("c");
 
-		replica1.merge(replica2); // "a", "c"
+		replica1.merge(replica2); 
+		replica1.get(); // set is {"a", "c"}
 ```
 
 Serialization

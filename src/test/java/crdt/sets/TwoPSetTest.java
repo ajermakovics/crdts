@@ -1,6 +1,7 @@
 package crdt.sets;
 
 import static com.google.common.collect.Sets.newHashSet;
+
 import static org.junit.Assert.assertEquals;
 
 import org.junit.Test;
@@ -48,6 +49,8 @@ public class TwoPSetTest {
 		set1.merge(set2);
 
 		assertEquals(newHashSet("a", "b"), set1.get());
+		assertEquals(newHashSet("a", "b"), set1.copy().get());
+
 	}
 
 	@Test

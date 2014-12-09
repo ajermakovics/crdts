@@ -6,10 +6,12 @@ import java.util.Collections;
 import java.util.LinkedHashSet;
 import java.util.Set;
 
+import crdt.CRDT;
+
 /**
  * Grow only set. Items can only be added
  */
-public class GSet<T> implements Serializable {
+public class GSet<T> implements CRDT<GSet<T>>, Serializable {
 
 	private static final long serialVersionUID = 1L;
 
@@ -26,6 +28,7 @@ public class GSet<T> implements Serializable {
 	/**
 	 * Merge another set into this one
 	 */
+	@Override
 	public void merge(GSet<T> set) {
 		items.addAll(set.items);
 	}
@@ -36,5 +39,12 @@ public class GSet<T> implements Serializable {
 
 	public void addAll(Collection<T> itemToAdd) {
 		items.addAll(itemToAdd);
+	}
+
+	@Override
+	public GSet<T> copy() {
+	    GSet<T> copy = new GSet<T>();
+	    copy.items = new LinkedHashSet<T>(items);
+	    return copy;
 	}
 }

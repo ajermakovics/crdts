@@ -4,10 +4,12 @@ import java.io.Serializable;
 import java.util.LinkedHashSet;
 import java.util.Set;
 
+import crdt.CRDT;
+
 /**
  * Two Phase Set. Items can be added and removed but only removed once.
  */
-public class TwoPSet<T> implements Serializable {
+public class TwoPSet<T> implements CRDT<TwoPSet<T>>, Serializable {
 
 	private static final long serialVersionUID = 1L;
 
@@ -31,8 +33,17 @@ public class TwoPSet<T> implements Serializable {
 		return added;
 	}
 
+	@Override
 	public void merge(TwoPSet<T> set) {
 		adds.addAll( set.adds.get() );
 		removes.addAll( set.removes.get() );
+	}
+
+	@Override
+	public TwoPSet<T> copy() {
+	    TwoPSet<T> copy = new TwoPSet<T>();
+	    copy.adds = adds.copy();
+	    copy.removes = removes.copy();
+	    return copy;
 	}
 }

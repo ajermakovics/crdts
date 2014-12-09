@@ -2,10 +2,12 @@ package crdt.counters;
 
 import java.io.Serializable;
 
+import crdt.CRDT;
+
 /**
  * Increment and decrement counter
  */
-public class PNCounter<T> implements Serializable {
+public class PNCounter<T> implements CRDT<PNCounter<T>>, Serializable {
 
 	private static final long serialVersionUID = 1L;
 
@@ -27,11 +29,13 @@ public class PNCounter<T> implements Serializable {
     /**
      * Merge another counter into this one
      */
+    @Override
 	public void merge(PNCounter<T> other) {
 		inc.merge( other.inc );
 		dec.merge( other.dec );
 	}
 
+    @Override
 	public PNCounter<T> copy() {
 		PNCounter<T> copy = new PNCounter<T>();
 		copy.inc = inc.copy();

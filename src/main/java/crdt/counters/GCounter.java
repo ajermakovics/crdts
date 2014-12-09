@@ -1,16 +1,17 @@
 package crdt.counters;
 
-import static java.lang.Math.max;
-
 import java.io.Serializable;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.Map.Entry;
 
+import static java.lang.Math.max;
+import crdt.CRDT;
+
 /**
  * Grow only counter. Can only be incremented
  */
-public class GCounter<T> implements Serializable {
+public class GCounter<T> implements CRDT<GCounter<T>>, Serializable {
 
 	private static final long serialVersionUID = 1L;
 
@@ -40,6 +41,7 @@ public class GCounter<T> implements Serializable {
     /**
      * Merge another counter into this one
      */
+    @Override
     public void merge(GCounter<T> other) {
         for(Entry<T, Integer> e: other.counts.entrySet()) {
             T key = e.getKey();
@@ -55,6 +57,7 @@ public class GCounter<T> implements Serializable {
 		return "GCounter{" + counts + "}";
 	}
 
+    @Override
     public GCounter<T> copy() {
     	GCounter<T> copy = new GCounter<T>();
     	copy.counts = new HashMap<T, Integer>(counts);
