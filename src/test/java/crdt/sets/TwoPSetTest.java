@@ -9,9 +9,10 @@ import org.junit.Test;
 
 public class TwoPSetTest {
 
+    TwoPSet<String> set = new TwoPSet<String>();
+
 	@Test
 	public void testElementExists_whenAdded() throws Exception {
-		TwoPSet<String> set = new TwoPSet<String>();
 
 		set.add("a");
 
@@ -20,7 +21,6 @@ public class TwoPSetTest {
 
 	@Test
 	public void testElementDoesNotExists_whenRemoved() throws Exception {
-		TwoPSet<String> set = new TwoPSet<String>();
 
 		set.add("a");
 		set.add("b");
@@ -31,7 +31,6 @@ public class TwoPSetTest {
 
 	@Test(expected = IllegalArgumentException.class)
 	public void testExceptionThrown_whenAddedAfterRemove() throws Exception {
-		TwoPSet<String> set = new TwoPSet<String>();
 
 		set.add("b");
 		set.remove("b");
@@ -40,33 +39,30 @@ public class TwoPSetTest {
 
 	@Test
 	public void testAllAddedPresent_whenMerged() throws Exception {
-		TwoPSet<String> set1 = new TwoPSet<String>();
 		TwoPSet<String> set2 = new TwoPSet<String>();
 
-		set1.add("a");
+		set.add("a");
 		set2.add("b");
 
-		set1.merge(set2);
+		set.merge(set2);
 
-		assertEquals(newHashSet("a", "b"), set1.get());
-		assertEquals(newHashSet("a", "b"), set1.copy().get());
+		assertEquals(newHashSet("a", "b"), set.get());
+		assertEquals(newHashSet("a", "b"), set.copy().get());
 
 	}
 
 	@Test
 	public void testItemNotPresent_whenRemovedInOtherSetAndMerged() throws Exception {
-		TwoPSet<String> replica1 = new TwoPSet<String>();
-		TwoPSet<String> replica2 = new TwoPSet<String>();
 
-		replica1.add("a");
-		replica1.add("b");
+		set.add("b");
+		TwoPSet<String> replica2 = set.copy();
 
-		replica2.add("b");
+		set.add("a");
 		replica2.remove("b");
 		replica2.add("c");
 
-		replica1.merge(replica2);
+		set.merge(replica2);
 
-		assertEquals(newHashSet("a", "c"), replica1.get());
+		assertEquals(newHashSet("a", "c"), set.get());
 	}
 }

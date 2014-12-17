@@ -1,13 +1,14 @@
 CRDTs 
 ================
 
-Simple Conflict-free Replicated Data Types (CRDTs) for distributed systems. CRDTs on different replicas can diverge from one another but at the end they can be safely merged providing an eventually consistent value. In other words, CRDTs have a **merge** method that is *idempotent* and *commutative*.
+Simple [Conflict-free Replicated Data Types](http://en.wikipedia.org/wiki/Conflict-free_replicated_data_type) (CRDTs) for distributed systems. CRDTs on different replicas can diverge from one another but at the end they can be safely merged providing an eventually consistent value. In other words, CRDTs have a **merge** method that is *idempotent* and *commutative*.
 
 The following CRDTs are implemented:
  - G-Counter - Grow only counter
  - PN-Counter - Increment/decrement counter 
  - G-Set - Grow only set
  - 2P-Set - Set that allows adds and removes but an item can be removed only once
+ - OR-Set - Set that allows multiple adds and removes. Adds win in case of a conflict.
 
 Examples
 ===========
