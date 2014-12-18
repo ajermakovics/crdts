@@ -49,6 +49,7 @@ Requirements
 ============
 
 Java 1.6
+The only dependency is Google Guava
 
 More info
 =========
