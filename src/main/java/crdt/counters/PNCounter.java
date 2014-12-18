@@ -1,13 +1,11 @@
 package crdt.counters;
 
-import java.io.Serializable;
-
 import crdt.CRDT;
 
 /**
  * Increment and decrement counter
  */
-public class PNCounter<T> implements CRDT<PNCounter<T>>, Serializable {
+public class PNCounter<T> implements CRDT<PNCounter<T>> {
 
 	private static final long serialVersionUID = 1L;
 

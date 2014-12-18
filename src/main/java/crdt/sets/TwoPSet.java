@@ -1,6 +1,5 @@
 package crdt.sets;
 
-import java.io.Serializable;
 import java.util.LinkedHashSet;
 import java.util.Set;
 
@@ -9,7 +8,7 @@ import crdt.CRDT;
 /**
  * Two Phase Set. Items can be added and removed but only removed once.
  */
-public class TwoPSet<T> implements CRDT<TwoPSet<T>>, Serializable {
+public class TwoPSet<T> implements CRDT<TwoPSet<T>> {
 
 	private static final long serialVersionUID = 1L;
 

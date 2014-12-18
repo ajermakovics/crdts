@@ -1,6 +1,5 @@
 package crdt.sets;
 
-import java.io.Serializable;
 import java.util.Collection;
 import java.util.Collections;
 import java.util.LinkedHashSet;
@@ -11,7 +10,7 @@ import crdt.CRDT;
 /**
  * Grow only set. Items can only be added
  */
-public class GSet<T> implements CRDT<GSet<T>>, Serializable {
+public class GSet<T> implements CRDT<GSet<T>> {
 
 	private static final long serialVersionUID = 1L;
 

@@ -1,6 +1,5 @@
 package crdt.sets;
 
-import java.io.Serializable;
 import java.util.Collection;
 import java.util.Set;
 import java.util.UUID;
@@ -14,7 +13,7 @@ import crdt.CRDT;
  * Observed-Removed Set. Supports adding and removing items multiple times.
  * In each addition items are tagged and an add wins over a remove during merge.
  */
-public class ORSet<T> implements CRDT<ORSet<T>>, Serializable {
+public class ORSet<T> implements CRDT<ORSet<T>> {
 
     private static final long serialVersionUID = 1L;
 

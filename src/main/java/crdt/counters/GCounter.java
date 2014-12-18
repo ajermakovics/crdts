@@ -1,6 +1,5 @@
 package crdt.counters;
 
-import java.io.Serializable;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.Map.Entry;
@@ -11,7 +10,7 @@ import crdt.CRDT;
 /**
  * Grow only counter. Can only be incremented
  */
-public class GCounter<T> implements CRDT<GCounter<T>>, Serializable {
+public class GCounter<T> implements CRDT<GCounter<T>> {
 
 	private static final long serialVersionUID = 1L;
 
