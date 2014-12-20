@@ -14,7 +14,7 @@ Examples
 ===========
 PN-Counter:
 ```java
-        PNCounter<String> replica1 = new PNCounter<String>();
+        PNCounter<String> replica1 = new PNCounter<>();
         replica1.increment("hostname1");
         
         PNCounter<String> replica2 = replica1.copy();
@@ -27,17 +27,17 @@ PN-Counter:
 ```
 2-P Set:
 ```java
-		TwoPSet<String> replica1 = new TwoPSet<String>();
+	TwoPSet<String> replica1 = new TwoPSet<>();
 
-		replica1.add("a");
-		replica1.add("b");
+	replica1.add("a");
+	replica1.add("b");
         
         TwoPSet<String> replica2 = replica1.copy();
-		replica2.remove("b");
-		replica2.add("c");
+	replica2.remove("b");
+	replica2.add("c");
 
-		replica1.merge(replica2); 
-		replica1.get(); // set is {"a", "c"}
+	replica1.merge(replica2); 
+	replica1.get(); // set is {"a", "c"}
 ```
 
 Serialization
