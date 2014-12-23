@@ -1,7 +1,7 @@
 CRDTs 
 ================
 
-Simple [Conflict-free Replicated Data Types](http://en.wikipedia.org/wiki/Conflict-free_replicated_data_type) (CRDTs) for distributed systems. CRDTs on different replicas can diverge from one another but at the end they can be safely merged providing an eventually consistent value. In other words, CRDTs have a **merge** method that is *idempotent* and *commutative*.
+Simple [Conflict-free Replicated Data Types](http://en.wikipedia.org/wiki/Conflict-free_replicated_data_type) (CRDTs) for distributed systems. CRDTs on different replicas can diverge from one another but at the end they can be safely merged providing an eventually consistent value. In other words, CRDTs have a **merge** method that is *idempotent*, *commutative* and *associative*.
 
 The following CRDTs are currently implemented:
  - G-Counter - Grow only counter
@@ -53,6 +53,7 @@ The only dependency is Google Guava
 
 More info
 =========
+ - http://book.mixu.net/distsys/eventual.html
  - [A comprehensive study of
 Convergent and Commutative Replicated Data Types](http://hal.upmc.fr/file/index/docid/555588/filename/techreport.pdf)
 
