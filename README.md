@@ -48,7 +48,7 @@ All CRDT classes implement Java Serializable but you should be able to use any o
 Requirements
 ============
 
-Java 1.6
+Java 1.6  
 The only dependency is Google Guava
 
 More info
