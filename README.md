@@ -32,7 +32,7 @@ PN-Counter:
 	replica1.add("a");
 	replica1.add("b");
         
-        TwoPSet<String> replica2 = replica1.copy();
+	TwoPSet<String> replica2 = replica1.copy();
 	replica2.remove("b");
 	replica2.add("c");
 
