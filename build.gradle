@@ -1,11 +1,13 @@
 apply plugin: 'java'
 apply plugin: 'eclipse'
+apply plugin: 'maven'
 
 sourceCompatibility = 1.6
 targetCompatibility = 1.6
-group = 'crdts'
 
+group = 'crdts'
 version = '1.0'
+
 jar {
     manifest {
         attributes 'Implementation-Title': 'CRDTs', 'Implementation-Version': version
