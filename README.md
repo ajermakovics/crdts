@@ -40,6 +40,12 @@ PN-Counter:
 	replica1.get(); // set is {"a", "c"}
 ```
 
+Download
+========
+
+Maven/Gradle dependency: https://jitpack.io/#ajermakovics/crdts
+
+
 Serialization
 ===========
 
